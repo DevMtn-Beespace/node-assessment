@@ -16,6 +16,7 @@ var controller = require('./controller.js');
 //GET
 app.get('/api/users', controller.getUsers); // works for language query too
 app.get('/api/users/:privilege', controller.getUsersByPrivilege);
+app.get('/api/user/:id', controller.getUserById); // I don't like the "user" vs. "users".
 
 //POST
 app.post('/api/users/', controller.createUser);
@@ -24,10 +25,11 @@ app.post('/api/users/:type', controller.createUserByType);
 //PUT (UDPATE)
 app.put('/api/users/language/:id', controller.updateLanguage);
 app.put('/api/users/forums/:id', controller.updateForum);
-
+app.put('/api/users/:id', controller.updateUserById);
 
 //DELETE
 app.delete('/api/users/forums/:id', controller.deleteForum);
+app.delete('/api/users/:id', controller.deleteUser);
 
 var port = 3000;
 app.listen(port, function(){
